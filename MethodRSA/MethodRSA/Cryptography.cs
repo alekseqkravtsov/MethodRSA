@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Numerics;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace MethodRSA
 {
@@ -21,11 +24,143 @@ namespace MethodRSA
             ','
         };
 
+        public void startProgram()
+        {
+            string message;
+
+            printAlphabet();
+
+            //стартовые числа
+            int[] arr = generateNumbers();
+            Console.Write("\n\nЧисло p = " + arr[0] +
+                          "\nЧисло q = " + arr[1] +
+                          "\nЧисло n = " + arr[2] +
+                          "\nЧисло fi(n) = " + arr[3] +
+                          "\nЧисло e = " + arr[4] +
+                          "\nЧисло d = " + arr[5] +
+                          "\n\n");
+
+            Console.WriteLine("Открытым ключом является {e, n} = " + arr[4] + " " + arr[2]);
+            Console.WriteLine("Закрытым ключом является {d, n} = " + arr[5] + " " + arr[2]);
+
+            while (true)
+            {
+                Console.Write("\nВведите сообщение: "); message = Console.ReadLine();
+                BigInteger[] encryptMessage = EcnryptByIndex(message);
+
+                if (encryptMessage != null)
+                {
+                    Console.Write("Шифр по индексам: "); printArray(encryptMessage);
+
+
+                    encryptMessage = Encrypt(encryptMessage, arr[4], arr[2]);
+                    Console.Write("\nШифр открытым ключем шифрования: "); printArray(encryptMessage);
+
+                    message = Decrypt(encryptMessage, arr[5], arr[2]);
+                    Console.Write("\nРасшифрованное сообщение закрытым ключом: "); Console.WriteLine(message + "\n");
+                }
+                else
+                    Console.WriteLine("Сообщение или ключ содержит недопустимый символ для заданного алфавита.");
+            }
+        }
+
+        public BigInteger[] Encrypt(BigInteger[] message, int e, int n)
+        {
+            BigInteger[] lockedMessage = new BigInteger[message.Length];
+            for(int i = 0; i < message.Length; i++)
+            {
+                lockedMessage[i] = (BigInteger.Pow(message[i], e)) % n;
+            }
+            return lockedMessage;
+        }
+
+        public string Decrypt(BigInteger[] lockedMessage, int d, int n)
+        {
+            string message = "";
+            BigInteger alphabetIndex;
+
+            for (int i = 0; i < lockedMessage.Length; i++)
+            {
+                alphabetIndex = ((BigInteger.Pow(lockedMessage[i], d)) % n) - 1;
+                message += GetSymbol((int)alphabetIndex);
+            }
+
+            return message;
+            
+        }
+
+        public BigInteger[] EcnryptByIndex(string message)
+        {
+            char[] characters = message.ToCharArray();
+            BigInteger[] lockedMessage = new BigInteger[characters.Length];
+
+            for (int i = 0; i < characters.Length; i++)
+            {
+                if (GetIndex(characters[i]) == -1)
+                    return null;
+                else
+                    lockedMessage[i] = GetIndex(characters[i]) + 1;
+            }
+
+            return lockedMessage;
+        }
+
+        private int GetIndex(char character)
+        {
+            int index = -1;
+            for (int i = 0; i < alphabet.Length; i++)
+            {
+                if (alphabet[i] == character)
+                {
+                    index = i; break;
+                }
+            }
+
+            return index;
+        }
+
+        private char GetSymbol(int index)
+        {
+            if ((index >= alphabet.Length) && (index < 0))
+                return ' ';
+
+            for (int i = 0; i < alphabet.Length; i++)
+            {
+                if (i == index)
+                    return alphabet[i];
+            }
+
+            return ' ';
+        }
+
+        public void printArray(BigInteger[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+        }
+
+        public void printAlphabet()
+        {
+            Console.WriteLine("Алфавит символов:");
+
+            int i;
+            for (i = 0; i < alphabet.Length; i++)
+            {
+                Console.Write(alphabet[i] + " ");
+                if ((i + 1) % 8 == 0)
+                    Console.WriteLine("");
+            }
+        }
+
         //Метод генерации всех необходимых чисел для шифрования и дешифрования
         public int[] generateNumbers()
         {
             int[] numbers = new int[6];
-            Random r = new Random();
+
+
+            /*Random r = new Random();
 
             //генерация p и q
             for (int i = 0; i < 2; i++)
@@ -36,7 +171,8 @@ namespace MethodRSA
                 {
                     numbers[i] = r.Next(2, 20);
                 }
-            }
+            }*/
+
 
             //статичные p и q
             numbers[0] = 7;
@@ -124,20 +260,7 @@ namespace MethodRSA
         static void Main(string[] args)
         {
             Cryptography cryptography = new Cryptography();
-
-            //стартовые числа
-            int[]arr = cryptography.generateNumbers();
-            Console.Write("Число p = "     + arr[0] +
-                        "\nЧисло q = "     + arr[1] +
-                        "\nЧисло n = "     + arr[2] +
-                        "\nЧисло fi(n) = " + arr[3] +
-                        "\nЧисло e = "     + arr[4] +
-                        "\nЧисло d = "     + arr[5] +
-                        "\n\n");
-
-            Console.WriteLine("Открытым ключом является {e, n} = " + arr[4] + " " + arr[2]);
-            Console.WriteLine("Закрытым ключом является {d, n} = " + arr[5] + " " + arr[2]);
-
+            cryptography.startProgram();
         }
     }
 }
