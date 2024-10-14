@@ -1,0 +1,7 @@
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\bin\Debug\MethodRSA.exe.config
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\bin\Debug\MethodRSA.exe
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\bin\Debug\MethodRSA.pdb
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\obj\Debug\MethodRSA.csproj.AssemblyReference.cache
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\obj\Debug\MethodRSA.csproj.CoreCompileInputs.cache
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\obj\Debug\MethodRSA.exe
+C:\Users\Алексей\Documents\GitRepos\MethodRSA\MethodRSA\MethodRSA\obj\Debug\MethodRSA.pdb
