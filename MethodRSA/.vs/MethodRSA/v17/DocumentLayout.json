@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0435\u0439\\Documents\\GitRepos\\MethodRSA\\MethodRSA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{433ABF3D-A3E3-4B1D-8F7C-470AFEB5A0FB}|MethodRSA\\MethodRSA.csproj|C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0435\u0439\\Documents\\GitRepos\\MethodRSA\\MethodRSA\\methodrsa\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{433ABF3D-A3E3-4B1D-8F7C-470AFEB5A0FB}|MethodRSA\\MethodRSA.csproj|c:\\users\\\u0430\u043B\u0435\u043A\u0441\u0435\u0439\\documents\\gitrepos\\methodrsa\\methodrsa\\methodrsa\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{433ABF3D-A3E3-4B1D-8F7C-470AFEB5A0FB}|MethodRSA\\MethodRSA.csproj|solutionrelative:methodrsa\\cryptography.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "MethodRSA\\Cryptography.cs",
               "ToolTip": "C:\\Users\\\u0410\u043B\u0435\u043A\u0441\u0435\u0439\\Documents\\GitRepos\\MethodRSA\\MethodRSA\\MethodRSA\\Cryptography.cs",
               "RelativeToolTip": "MethodRSA\\Cryptography.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAkwLAAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAAwMwAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-14T07:11:54.079Z",
               "EditorCaption": ""

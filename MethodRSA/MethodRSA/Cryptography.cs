@@ -160,23 +160,24 @@ namespace MethodRSA
             int[] numbers = new int[6];
 
 
-            /*Random r = new Random();
+            Random r = new Random();
 
-            //генерация p и q
-            for (int i = 0; i < 2; i++)
+            //генерация числа p в диапазоне от 2 до 20
+            numbers[0] = r.Next(2, 20);
+            while (!IsPrime(numbers[0]))
+                numbers[0] = r.Next(2, 20);
+
+            //генерация числа q в диапазоне от p до 30
+            numbers[1] = r.Next(numbers[0] + 1, 30);
+            while (!IsPrime(numbers[1]))
             {
-                numbers[i] = r.Next(2, 20);
-
-                while (!IsPrime(numbers[i]))
-                {
-                    numbers[i] = r.Next(2, 20);
-                }
-            }*/
-
+                numbers[1] = r.Next(numbers[0] + 1, 30);
+            }
+                
 
             //статичные p и q
-            numbers[0] = 7;
-            numbers[1] = 17;
+            //numbers[0] = 7;
+            //numbers[1] = 17;
 
             numbers[2] = numbers[0] * numbers[1];                       //определение числа n;
             numbers[3] = (numbers[0] - 1) * (numbers[1] - 1);           //определение числа fi(n);
@@ -192,7 +193,7 @@ namespace MethodRSA
             // Начинаем с 3 и идем до φ(n)
             for (int i = 3; i < phiN; i += 2)      // Используем только нечетные числа
             {
-                if (GCD(i, phiN) == 1)
+                if (GCD(phiN, i) == 1)
                 {
                     return i;                       // Возвращаем первое найденное значение e
                 }
