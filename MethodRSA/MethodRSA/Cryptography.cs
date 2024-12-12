@@ -163,9 +163,9 @@ namespace MethodRSA
             Random r = new Random();
 
             //генерация числа p в диапазоне от 2 до 20
-            numbers[0] = r.Next(2, 20);
+            numbers[0] = r.Next(3, 20);
             while (!IsPrime(numbers[0]))
-                numbers[0] = r.Next(2, 20);
+                numbers[0] = r.Next(3, 20);
 
             //генерация числа q в диапазоне от p до 30
             numbers[1] = r.Next(numbers[0] + 1, 30);
@@ -175,9 +175,8 @@ namespace MethodRSA
             }
                 
 
-            //статичные p и q
-            //numbers[0] = 7;
-            //numbers[1] = 17;
+            numbers[0] = 7;
+            numbers[1] = 17;
 
             numbers[2] = numbers[0] * numbers[1];                       //определение числа n;
             numbers[3] = (numbers[0] - 1) * (numbers[1] - 1);           //определение числа fi(n);
